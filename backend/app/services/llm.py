@@ -58,8 +58,13 @@ SUMMARY_PROMPT = (
 )
 
 QA_PROMPT = (
-    "You answer questions about one research paper, provided below. Answer only from the "
-    "paper. If the answer is not in the paper, say that the paper does not say. "
+    "You answer questions about one research paper, provided below. Use only the paper's "
+    "content and never invent facts that are not in it. Interpret short or informal questions "
+    "charitably (for example, \"what is gap\" means the research gap or problem the paper "
+    "addresses). If the paper does not contain what was asked, do not just refuse: say that you "
+    "could not find it in the text, say what kind of paper this appears to be when that explains "
+    "it (for example a conceptual or position paper with no experiments or datasets), and then "
+    "give the closest relevant information the paper does provide. "
     "Be concise and specific; mention sections, datasets or numbers when the paper gives them.\n\n"
 )
 

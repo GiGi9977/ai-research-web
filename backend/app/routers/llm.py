@@ -27,8 +27,17 @@ def _paper_or_404(db: Session, paper_id: int) -> Paper:
 def _llm_http_error(e: Exception) -> HTTPException:
     if isinstance(e, llm.LLMNotConfigured):
         return HTTPException(status_code=503, detail=str(e))
-    log.warning("LLM call failed: %s", e)
-    return HTTPException(status_code=502, detail=f"LLM request failed: {e}")
+    # Never echo OpenAI's raw message to the browser: it can contain part of the API key.
+    log.warning("LLM call failed: %s", type(e).__name__)
+    if isinstance(e, openai.AuthenticationError):
+        detail = "OpenAI rejected the API key. Check OPENAI_API_KEY in backend/.env and restart the backend."
+    elif isinstance(e, openai.RateLimitError):
+        detail = "OpenAI rate limit or quota exceeded. Check your OpenAI billing and usage."
+    elif isinstance(e, openai.APIConnectionError):
+        detail = "Could not reach OpenAI. Check your internet connection."
+    else:
+        detail = f"LLM request failed ({type(e).__name__})."
+    return HTTPException(status_code=502, detail=detail)
 
 
 @router.post("/{paper_id}/summary")

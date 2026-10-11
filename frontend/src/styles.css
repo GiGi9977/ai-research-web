@@ -1,0 +1,37 @@
+body { margin: 0; font-family: system-ui, sans-serif; background: #f6f7f9; color: #1b1f24; }
+.app { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+button, input { font: inherit; }
+button { padding: 8px 14px; border: 0; border-radius: 6px; background: #2b59c3; color: #fff; cursor: pointer; }
+button:disabled { opacity: 0.6; cursor: default; }
+button.link { background: none; color: #2b59c3; padding: 0; }
+.search-bar { display: flex; gap: 8px; margin-bottom: 16px; }
+.search-bar input { flex: 1; padding: 10px 12px; border: 1px solid #c8ccd2; border-radius: 6px; }
+.card { background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+.card h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.meta { margin: 0 0 8px; color: #5b6470; font-size: 0.9rem; }
+.abstract { margin: 0 0 8px; line-height: 1.5; }
+.card-actions { display: flex; gap: 16px; align-items: center; }
+.card-actions a { color: #2b59c3; text-decoration: none; }
+.error { color: #b3261e; }
+.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tabs button { background: #e6e9ee; color: #1b1f24; }
+.tabs button.active { background: #2b59c3; color: #fff; }
+button.secondary { background: #e6e9ee; color: #1b1f24; }
+button.danger { background: #b3261e; }
+.detail h2 { margin: 12px 0 4px; }
+.edit-form { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.edit-form label { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; color: #5b6470; }
+.edit-form input, .edit-form textarea { padding: 8px 10px; border: 1px solid #c8ccd2; border-radius: 6px; font: inherit; color: #1b1f24; }
+.dropzone { border: 2px dashed #c8ccd2; border-radius: 8px; padding: 16px; margin-bottom: 16px; text-align: center; background: #fff; }
+.dropzone.dragging { border-color: #2b59c3; background: #eef3ff; }
+.dropzone p { margin: 0; }
+.panel { background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px; margin-top: 16px; }
+.panel h3 { margin: 0; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.summary { white-space: pre-wrap; line-height: 1.55; }
+.chat { display: flex; flex-direction: column; gap: 8px; max-height: 420px; overflow-y: auto; margin: 12px 0; }
+.bubble { padding: 8px 12px; border-radius: 10px; max-width: 85%; white-space: pre-wrap; line-height: 1.5; }
+.bubble.user { align-self: flex-end; background: #2b59c3; color: #fff; }
+.bubble.assistant { align-self: flex-start; background: #eef0f3; }
+.suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.suggestions button { font-size: 0.85rem; }

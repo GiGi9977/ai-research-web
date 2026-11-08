@@ -1,0 +1,35 @@
+........................................................................ [ 83%]
+..............                                                           [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:488
+<frozen importlib._bootstrap>:488
+
+<frozen importlib._bootstrap>:488
+<frozen importlib._bootstrap>:488
+
+<frozen importlib._bootstrap>:488
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.4-final-0 _______________
+
+Name                          Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------
+app/config.py                    13      0      0      0   100%
+app/db.py                        20      7      0      0    65%   16, 27-31, 35-37
+app/main.py                      17      2      0      0    88%   12-13
+app/models.py                    29      0      0      0   100%
+app/routers/llm.py               54      0     12      0   100%
+app/routers/papers.py            80      1     22      1    98%   39
+app/routers/search.py            13      0      2      0   100%
+app/schemas.py                   40      0      0      0   100%
+app/services/llm.py              33      0      6      0   100%
+app/services/metadata.py         98      2     36      5    95%   42->38, 48->45, 81, 97, 117->115
+app/services/openalex.py         30      1      8      1    95%   49
+app/services/pdf.py              52      0     12      0   100%
+app/services/pdf_sources.py      48      0     18      2    97%   37->34, 38->37
+-------------------------------------------------------------------------
+TOTAL                           527     13    116      9    97%
+
+3 empty files skipped.
+86 passed, 5 warnings in 1.14s

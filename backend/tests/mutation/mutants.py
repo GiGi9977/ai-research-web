@@ -1,0 +1,36 @@
+"""Hand-written mutants (seeded faults) used to measure fault-detection capability.
+
+Each entry: (id, file, original snippet, mutated snippet, description).
+"""
+MUTANTS = [
+    ("M01", "app/routers/search.py", "min(limit, MAX_LIMIT)", "limit", "search limit not capped"),
+    ("M02", "app/routers/search.py", "if not q:", "if False:", "empty query not rejected"),
+    ("M03", "app/routers/papers.py", "        if existing:", "        if False:", "duplicate save not detected"),
+    ("M04", "app/routers/papers.py", "response.status_code = 200", "response.status_code = 201", "duplicate save returns 201"),
+    ("M05", "app/routers/papers.py", 'if not data.startswith(b"%PDF"):', "if False:", "non-PDF upload accepted"),
+    ("M06", "app/routers/papers.py", "if len(data) > MAX_PDF_BYTES:", "if False:", "upload size limit removed"),
+    ("M07", "app/routers/papers.py", "pdf_url = candidate", "pass", "fallback PDF URL not recorded"),
+    ("M08", "app/routers/papers.py", "out.has_full_text = bool(paper.full_text)", "out.has_full_text = False", "hasFullText always false"),
+    ("M09", "app/routers/papers.py", "Paper.created_at.desc(), Paper.id.desc()", "Paper.created_at.asc(), Paper.id.asc()", "library order reversed"),
+    ("M10", "app/routers/papers.py", 'if field == "title" and value is None:', "if False:", "PATCH title=null erases title"),
+    ("M11", "app/routers/llm.py", "if paper.summary and not refresh:", "if paper.summary:", "refresh ignored"),
+    ("M12", "app/routers/llm.py", 'role="user", content=question', 'role="user", content=body.question', "question stored unstripped"),
+    ("M13", "app/routers/llm.py", "status_code=503", "status_code=502", "missing key reported as 502"),
+    ("M14", "app/routers/llm.py", 'detail = "OpenAI rejected the API key.', 'detail = str(e) + "', "raw OpenAI error (key) leaked"),
+    ("M15", "app/routers/llm.py", "    db.commit()\n    return {\"summary\"", "    return {\"summary\"", "summary not persisted"),
+    ("M16", "app/services/llm.py", "*history[-MAX_HISTORY_MESSAGES:]", "*history", "chat history not windowed"),
+    ("M17", "app/services/llm.py", "paper.full_text[:MAX_CONTEXT_CHARS]", "paper.full_text", "context not truncated"),
+    ("M18", "app/services/llm.py", "    if paper.full_text:", "    if False:", "full text ignored (abstract only)"),
+    ("M19", "app/services/llm.py", 'or key == "your-key-here"', "", "placeholder key treated as real"),
+    ("M20", "app/services/llm.py", "*history[-MAX_HISTORY_MESSAGES:],", "", "chat history dropped"),
+    ("M21", "app/services/pdf.py", "if len(text) < MIN_TEXT_CHARS:", "if False:", "scanned PDFs accepted"),
+    ("M22", "app/services/pdf.py", "return all(ipaddress.ip_address(i[4][0]).is_global for i in infos)", "return True", "SSRF guard disabled"),
+    ("M23", "app/services/pdf.py", "if size > MAX_PDF_BYTES:", "if False:", "download size limit removed"),
+    ("M24", "app/services/pdf_sources.py", "if _norm(found) == _norm(title):", "if True:", "arXiv accepts any title"),
+    ("M25", "app/services/pdf_sources.py", "if doi and settings.unpaywall_email:", "if doi:", "Unpaywall called without email"),
+    ("M26", "app/services/metadata.py", 'return result if result["title"] else None', "return result", "GROBID result without title used"),
+    ("M27", "app/services/metadata.py", "{k: grobid[k] or heuristic[k] for k in grobid}", "grobid", "GROBID gaps not filled"),
+    ("M28", "app/services/metadata.py", 'if AFFILIATION_WORDS.search(line["text"]):', "if False:", "affiliations parsed as authors"),
+    ("M29", "app/services/openalex.py", 'work.get("title") or work.get("display_name") or', 'work.get("title") or', "display_name fallback dropped"),
+    ("M30", "app/services/openalex.py", "words[i] for i in sorted(words)", "w for w in words.values()", "abstract words out of order"),
+]

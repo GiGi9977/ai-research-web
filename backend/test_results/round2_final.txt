@@ -1,0 +1,31 @@
+.....xxxxx.............................................................. [ 61%]
+.............................................                            [100%]
+=============================== warnings summary ===============================
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.4-final-0 _______________
+Name                          Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------
+app/config.py                    13      0      0      0   100%
+app/db.py                        20      0      0      0   100%
+app/main.py                      17      0      0      0   100%
+app/models.py                    29      0      0      0   100%
+app/routers/llm.py               54      0     12      0   100%
+app/routers/papers.py            80      0     22      0   100%
+app/routers/search.py            13      0      2      0   100%
+app/schemas.py                   40      0      0      0   100%
+app/services/llm.py              33      0      6      0   100%
+app/services/metadata.py         98      1     36      3    97%   42->38, 48->45, 81
+app/services/openalex.py         30      0      8      0   100%
+app/services/pdf.py              52      0     12      0   100%
+app/services/pdf_sources.py      48      0     18      2    97%   37->34, 38->37
+-------------------------------------------------------------------------
+TOTAL                           527      1    116      5    99%
+3 empty files skipped.
+=========================== short test summary info ============================
+XFAIL tests/test_known_bugs.py::test_bug1_patch_authors_null_does_not_break_library - BUG-1: PATCH authors=null stores NULL; paper and whole library then 500
+XFAIL tests/test_known_bugs.py::test_bug2_blank_question_rejected - BUG-2: whitespace-only question passes validation and is sent to the LLM
+XFAIL tests/test_known_bugs.py::test_bug3_blank_title_rejected_on_save - BUG-3: whitespace-only title accepted when saving
+XFAIL tests/test_known_bugs.py::test_bug3_blank_title_rejected_on_edit - BUG-3: whitespace-only title accepted when editing
+XFAIL tests/test_known_bugs.py::test_bug4_redirect_to_private_host_is_blocked - BUG-4: SSRF guard checks only the first URL; redirects to private hosts are followed
+112 passed, 5 xfailed, 5 warnings in 1.61s

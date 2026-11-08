@@ -1,0 +1,32 @@
+M01 KILLED   app/routers/search.py        search limit not capped
+M02 KILLED   app/routers/search.py        empty query not rejected
+M03 KILLED   app/routers/papers.py        duplicate save not detected
+M04 KILLED   app/routers/papers.py        duplicate save returns 201
+M05 KILLED   app/routers/papers.py        non-PDF upload accepted
+M06 survived app/routers/papers.py        upload size limit removed
+M07 KILLED   app/routers/papers.py        fallback PDF URL not recorded
+M08 KILLED   app/routers/papers.py        hasFullText always false
+M09 survived app/routers/papers.py        library order reversed
+M10 KILLED   app/routers/papers.py        PATCH title=null erases title
+M11 KILLED   app/routers/llm.py           refresh ignored
+M12 survived app/routers/llm.py           question stored unstripped
+M13 KILLED   app/routers/llm.py           missing key reported as 502
+M14 KILLED   app/routers/llm.py           raw OpenAI error (key) leaked
+M15 KILLED   app/routers/llm.py           summary not persisted
+M16 KILLED   app/services/llm.py          chat history not windowed
+M17 KILLED   app/services/llm.py          context not truncated
+M18 KILLED   app/services/llm.py          full text ignored (abstract only)
+M19 KILLED   app/services/llm.py          placeholder key treated as real
+M20 KILLED   app/services/llm.py          chat history dropped
+M21 KILLED   app/services/pdf.py          scanned PDFs accepted
+M22 KILLED   app/services/pdf.py          SSRF guard disabled
+M23 KILLED   app/services/pdf.py          download size limit removed
+M24 KILLED   app/services/pdf_sources.py  arXiv accepts any title
+M25 KILLED   app/services/pdf_sources.py  Unpaywall called without email
+M26 KILLED   app/services/metadata.py     GROBID result without title used
+M27 KILLED   app/services/metadata.py     GROBID gaps not filled
+M28 KILLED   app/services/metadata.py     affiliations parsed as authors
+M29 survived app/services/openalex.py     display_name fallback dropped
+M30 KILLED   app/services/openalex.py     abstract words out of order
+
+Mutation score: 26/30 = 87%

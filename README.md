@@ -107,4 +107,4 @@ Wait about 15 seconds; `curl localhost:8070/api/isalive` should print `true`. Wi
 - Scanned PDFs without a text layer are rejected (no OCR).
 - OpenAlex abstracts are sometimes missing or low quality; that comes from the data source.
 - GROBID often misses the publication year; the app then guesses it from the first page, so check it.
-- Tests are out of scope for this homework.
+- Backend tests: see [TESTING.md](TESTING.md).
